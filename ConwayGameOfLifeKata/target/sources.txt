@@ -1,0 +1,2 @@
+./kata/gameOfLife/ConwayGameOfLife.java
+./kata/gameOfLife/ConwayGameOfLifeTest.java
