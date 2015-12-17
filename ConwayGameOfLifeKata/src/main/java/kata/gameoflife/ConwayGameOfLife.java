@@ -17,7 +17,7 @@ public class ConwayGameOfLife {
 		boolean loop = true;
 		while(loop) {
 			clearConsole();
-			System.out.println("Press any key to exit");
+			System.out.println("Press any key then ENTER to exit");
 			grid.printGrid();
 			grid.nextGenerationGrid();
 			Thread.sleep(1000);

@@ -95,6 +95,21 @@ public class Grid {
 
   }
 
+  public String stateToString() {
+    StringBuffer sb = new StringBuffer();
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        if (isNeighborAlive(i,j)) {
+          sb.append("*");
+        } else {
+          sb.append("-");
+        }
+      }
+      sb.append("\n");
+    }
+    return sb.toString();
+  }
+
   public void printGrid() {
     System.out.print("\n\n\n\t\t\t\t");
     for (int i = 0; i < height; i++) {

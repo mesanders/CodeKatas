@@ -7,17 +7,38 @@ import java.util.concurrent.TimeUnit;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.*;
 
+import kata.gameoflife.Grid;
+
 @WebSocket
 public class ConwayGameOfLifeSocket {
 	private Session session;
-	private ScheduledExecutorService exeutor = Executors.newScheduledThreadPool(1);	
+	private Grid grid;
+	private final static String DEFAULT_FILE = "../resources/second_ingest.txt";
+	private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);	
 
 	// Called when the socket connection with the browser is first established
 	@OnWebSocketConnect
 	public void handleConnect(Session session) {
 		this.session = session;
+		this.grid = new Grid();
+		try { 
+			grid.readGrid(DEFAULT_FILE);
+		} catch (IOException ie) {
+			ie.printStackTrace();
+		}
+
 		System.out.println("New session");
 		send("Success - From the server.");
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException ie) {
+			ie.printStackTrace();
+		}
+
+		executor.scheduleAtFixedRate( () -> { 
+			grid.nextGenerationGrid();
+			send(grid.stateToString()); 
+		}, 0, 1, TimeUnit.SECONDS );
 	}
 
 	// Called when the connection is closed, may want to log the statusCode/Reason
