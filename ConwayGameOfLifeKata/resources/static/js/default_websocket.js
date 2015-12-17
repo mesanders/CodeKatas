@@ -7,7 +7,12 @@ ws.onopen = function() {
 
 // Called when a message is received from the server
 ws.onmessage = function (event) {
-	appendLog(event.data);
+	// Javascript event is :MessageEvent type. Data is an object and in this case it's a string.
+	if (!event.data.includes("*")) { 
+		appendLog(event.data);
+	} else {
+		appendGameOfLife(event.data);
+	}
 };
 
 ws.onclose = function() {
@@ -24,7 +29,14 @@ function appendLog(logText) {
 	log.value = log.value + logText + "\n";
 }
 
+// Refreshes Conway Game "of Life
+function appendGameOfLife(logText) {
+	var log = document.getElementById("log");
+	log.value = logText;
+}
+
 // sends msg to the server over websocket
 function sendToServer(message) {
 	ws.send(message);
 }
+
