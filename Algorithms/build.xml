@@ -1,0 +1,39 @@
+<project name="Algorithms" default="main">
+	<property name="src.test" value="src/test/java" />
+	<property name="src.main" value="src/main/java" />
+	<property name="bin.dir" value="bin/" />
+	<property name="classes.dir" value="${bin.dir}/classes" />
+	<tstamp>
+        <format property="current.time"
+             pattern="MM-dd-YY_hh-mm"/>
+    </tstamp>
+
+	<target name="copy">
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${classes.dir}" />
+	</target>
+
+	<target name="compile">
+		<javac srcdir="src/main/java" includeantruntime="false" destdir="${classes.dir}" />
+		<javac srcdir="src/test/java" includeantruntime="false" destdir="${classes.dir}" />
+	</target>
+
+	<target name="runtests">
+		<java fork="true"  classname="kata.algorithms.AlgorithmsCustomTestRunner" dir="${classes.dir}">
+			<arg value="-h" />
+			<assertions enableSystemAssertions="true"><enable/></assertions>
+		</java>
+	</target>
+
+	<target name="jar" depends="main" description="generate the distribution">
+	    <!-- Create the distribution directory -->
+	    <mkdir dir="${bin.dir}"/>
+	    <delete>
+	    	<fileset dir="${bin.dir}" includes="*jar"/>
+	    </delete>
+    	<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    	<jar jarfile="${bin.dir}/Algorithms_${current.time}.jar" basedir="${classes.dir}"/>
+  	</target>
+
+	<target name="main" depends="copy,compile,runtests"/>
+</project>
