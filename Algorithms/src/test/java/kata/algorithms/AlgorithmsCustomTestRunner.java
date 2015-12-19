@@ -12,7 +12,16 @@ public static final String ANSI_CYAN = "\u001B[1;36m";
 public static final String ANSI_WHITE = "\u001B[1;37m";
 
 	public static void main(String[] args) {
-		echo("HELLO TEST");
+		runRBBinarySearchTreeTest();
+	}
+
+	public static void runRBBinarySearchTreeTest() {
+		echo("RBBinarySearchTreeTest testNode()");
+		RBBinarySearchTreeTest test = new RBBinarySearchTreeTest();
+		test.testNode();
+
+		echo("RBBinarySearchTreeTest testInsert()");
+		test.testInsert();
 	}
 
 	public static void echo(String message) {
