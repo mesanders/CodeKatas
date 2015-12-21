@@ -22,6 +22,9 @@ public static final String ANSI_WHITE = "\u001B[1;37m";
 
 		echo("RBBinarySearchTreeTest testInsert()");
 		test.testInsert();
+
+		echo("RBBinarySearchTreeTest testDelete()");
+		test.testDelete();
 	}
 
 	public static void echo(String message) {

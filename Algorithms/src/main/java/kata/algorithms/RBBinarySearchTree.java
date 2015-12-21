@@ -10,6 +10,12 @@ package kata.algorithms;
 *
 * Leaf nodes of rb trees don't contain any data. Normally held by a null pointer.
 * 
+* Requirements for Binary Search Tree
+* 	1. Each node in the tree stores an element and can have at most two child nodes.
+*	2. The tree does not contain any duplicate values.
+*	3. Elements in a node's left subtree are strictly smaller than the node's element.
+*	4. Elements in a node's right subtree are strictly greater than the node's element.
+*
 * Requirements for Red-Black Tree:
 * 	1. A node is either red or black
 *	2. The root is black. This rule is sometimes omitted. Since the root can always be changed from red
@@ -68,6 +74,52 @@ public class RBBinarySearchTree {
 	}	
 
 
+	public void delete(int value) {
+		if (contains(value)) {
+			root = delete(root, value);	
+			size--;	
+		}
+	}
+
+	private Node<Integer, Integer> delete(Node<Integer, Integer> node, int value) {
+		// Exit statement to where the node that we are going to delete
+		// the first if - else if statement takes care of whether or not the node is the root.
+		if (node.getKey() == value && !node.hasChildren()) {
+			return null;
+		} else if (node.getKey() == value && node.hasChildren()) {
+			if (node.getLeft() == null && node.getRight() != null) {
+				return node.getRight();
+			} else if (node.getLeft() != null && node.getRight() == null) {
+				return node.getLeft();
+			} else {
+				return deleteRotateRight(node);
+			}
+		} else {
+			if (node.getKey() > value) {
+				node.left = delete(node.getLeft(), value);
+				return node;
+			} else {
+				node.right = delete(node.getRight(), value);
+				return node;
+			}
+		}
+	}
+
+	private Node<Integer, Integer> deleteRotateRight(Node<Integer, Integer> node ) {
+		Node<Integer, Integer> rightNode = node.getRight();
+		// Find the right most leaf node of the left node, and append the right node of the node that will be deleted to it.
+		findRightLeaf(node.getLeft()).right = rightNode;
+		return node.getLeft();
+	}
+
+	private Node<Integer, Integer> findRightLeaf(Node<Integer, Integer> node) {
+		if (node.getRight() == null) {
+			return node;
+		} else {
+			return node.getRight();
+		}
+	}
+
 	public boolean contains(int value) {
 		return contains(root, value);
 	}
@@ -100,8 +152,8 @@ public class RBBinarySearchTree {
 	}
 
 	public class Node<K, V> {
-		private Node left = null;
-		private Node right = null;
+		private Node<K, V> left = null;
+		private Node<K, V> right = null;
 		private K key;
 		private V value;
 
@@ -110,15 +162,27 @@ public class RBBinarySearchTree {
 			this.value = value;
 		}
 
+		public boolean hasChildren() {
+			return left != null || right != null;
+		}
+
+		public boolean childrenHasKey(K key) {
+			return right.getKey() == key || left.getKey() == key;
+		}
+
+		public boolean hasTwoChildren() {
+			return left != null && right != null;
+		}
+
 		public Node(K key) {
 			this.key = key;
 		}
 
-		public Node getLeft() {
+		public Node<K, V> getLeft() {
 			return left;
 		}
 
-		public Node getRight() {
+		public Node<K, V> getRight() {
 			return right;
 		}
 
