@@ -31,7 +31,17 @@ package kata.algorithms;
 * Search 	AC: O(log n)	WC: O(log n)
 * Insert 	AC: O(log n)	WC: O(log n)
 * Delete 	AC: O(log n)	WC: O(log n)
+*
+* TODO: 
+*
+*
 * 
+*
+*
+* 
+*
+*
+*
 */
 
 public class RBBinarySearchTree {
@@ -107,7 +117,9 @@ public class RBBinarySearchTree {
 
 	private Node<Integer, Integer> deleteRotateRight(Node<Integer, Integer> node ) {
 		Node<Integer, Integer> rightNode = node.getRight();
-		// Find the right most leaf node of the left node, and append the right node of the node that will be deleted to it.
+		// Find public void testName() throws Exception {
+			
+		}he right most leaf node of the left node, and append the right node of the node that will be deleted to it.
 		findRightLeaf(node.getLeft()).right = rightNode;
 		return node.getLeft();
 	}
