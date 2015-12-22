@@ -19,15 +19,13 @@ This part of the katas will be used to go over data structures and algorithms. M
 	One should Depend upon Abstractions. Do not depend upon concretions. 
 
 ##Possible Questions
-1. 
+1.    Given a price rules of parking and start time and end time of parking. Calculate the price (Below is the table of price rule) Come up with data structure you can store these price rules PriceRule
 
-    Given a price rules of parking and start time and end time of parking. Calculate the price (Below is the table of price rule) Come up with data structure you can store these price rules PriceRule
-
-Price Rules:
-On Weekday      On Weekend
-Hours   Price       Hours       Price
-0 – 2      $5           0 – 2          $8
-2 – 6      $10         2 – 6         $13
-6 – 12    $15         6 – 12        $18
-12 – 24  $20        12 – 24      $25
-The interviewer asked me to come up with an architecture for a system which shows the parking spaces available near customers’ location in a mobile app.
+	Price Rules:
+	On Weekday      On Weekend
+	Hours   Price       Hours       Price
+	0 – 2      $5           0 – 2          $8
+	2 – 6      $10         2 – 6         $13
+	6 – 12    $15         6 – 12        $18
+	12 – 24  $20        12 – 24      $25
+	Architecture for a system which shows the parking spaces available near customers’ location in a mobile app.
