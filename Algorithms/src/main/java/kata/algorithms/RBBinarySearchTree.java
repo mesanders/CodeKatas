@@ -32,16 +32,21 @@ package kata.algorithms;
 * Insert 	AC: O(log n)	WC: O(log n)
 * Delete 	AC: O(log n)	WC: O(log n)
 *
-* TODO: 
+* TODO: BST Print the neighbor of each element in a tree
 *
-*
+*				10
+* 			   /  \
+*			  7	   29
+*			/  \  /  \
+*		   5   9 11   35
 * 
 *
+*		Example: 10-> Null 	| 	7->29	| 5-> 9 | 9 -> 11 | 11 -> 35
 *
-* 
-*
-*
-*
+*	TODO: Lowest Common ancestor in a Bianry Search Tree and Binary Tree.
+* 	TODO: Vertical traversal of a Binary Tree.
+*	TODO: Convert BST into DLL and vice versa in place
+* 	TODO: Binary tree traversal questions like left view, right view, top view, bottom view, maximum of a level, minimum of a level, children sum property, diameter etc.
 */
 
 public class RBBinarySearchTree {
@@ -119,7 +124,7 @@ public class RBBinarySearchTree {
 		Node<Integer, Integer> rightNode = node.getRight();
 		// Find public void testName() throws Exception {
 			
-		}he right most leaf node of the left node, and append the right node of the node that will be deleted to it.
+		// The right most leaf node of the left node, and append the right node of the node that will be deleted to it.
 		findRightLeaf(node.getLeft()).right = rightNode;
 		return node.getLeft();
 	}
