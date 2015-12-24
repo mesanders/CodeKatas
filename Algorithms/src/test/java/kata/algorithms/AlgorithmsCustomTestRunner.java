@@ -13,6 +13,7 @@ public static final String ANSI_WHITE = "\u001B[1;37m";
 
 	public static void main(String[] args) {
 		runRBBinarySearchTreeTest();
+		runLinkedListTest();
 	}
 
 	public static void runRBBinarySearchTreeTest() {
@@ -25,6 +26,27 @@ public static final String ANSI_WHITE = "\u001B[1;37m";
 
 		echo("RBBinarySearchTreeTest testDelete()");
 		test.testDelete();
+	}
+
+	public static void runLinkedListTest() {
+		LinkedListTest linkedListTest = new LinkedListTest();
+		echo("LinkedListTest testNode()");
+		linkedListTest.testNode();	
+
+		echo("LinkedListTest testInsert()");
+		linkedListTest.testInsert();
+
+		echo("LinkedListTest testRemove()");
+		linkedListTest.testRemove();
+
+		echo("LinkedListTest testClear()");
+		linkedListTest.testClear();
+
+		echo("LinkedListTest testPopTop()");
+		linkedListTest.testPopTop();
+
+		echo("LinkedListTest testPopBottom()");
+		linkedListTest.testPopBottom();
 	}
 
 	public static void echo(String message) {
