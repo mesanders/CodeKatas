@@ -29,6 +29,9 @@ public class LinkedList<T> {
 	}
 
 	public T popTop() {
+		if (isEmpty()) {
+			return null;
+		}
 		T value = head.getValue();
 		head = head.next;
 		size--;
@@ -36,7 +39,12 @@ public class LinkedList<T> {
 	}
 
 	public T popBottom() {
+		if (isEmpty() || tail.getValue() == null) {
+			return null;
+		}
+
 		T value = tail.getValue();
+
 		if (tail.prev != null) {
 			tail = tail.prev;
 			tail.next = null;
@@ -90,9 +98,9 @@ public class LinkedList<T> {
 			head = node;
 			tail = head;
 		} else {
-			Node<T> oldTail = tail;
+			tail.next = node;
+			node.prev = tail;
 			tail = node;
-			oldTail.next = tail;
 		}
 	}
 
@@ -104,6 +112,19 @@ public class LinkedList<T> {
 		if (node != null) {
 			System.out.print(node.getValue() + " ");
 			print(node.getNext());
+		} else {
+			System.out.println();
+		}
+	}
+
+	public void printAllReverse() {
+		printReverse(tail);
+	}
+
+	private void printReverse(Node<T> node) {
+		if (node!=null) {
+			System.out.print(node.getValue() + " ");
+			printReverse(node.getPrev());
 		} else {
 			System.out.println();
 		}

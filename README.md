@@ -13,3 +13,6 @@ Need to keep my skills sharp and collaborate with people outside of work. The pa
 3.	Limit the number of external libraries. Try to do as much with the core library in java. Example used Jetty, because it's easy to setup a web server with Jetty versus using the HTTPServer in the core library.
 4.	Learn something new. Whether it's a new functionality(WebSockets) or something tricky (multi-threading)
 5.	 Don't learn too many technologies or libraries within one module (Example: Don't learn multithreading and web development in the same module.)
+
+
+Lawler - Matroid Theory

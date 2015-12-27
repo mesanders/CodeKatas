@@ -14,6 +14,42 @@ public static final String ANSI_WHITE = "\u001B[1;37m";
 	public static void main(String[] args) {
 		runRBBinarySearchTreeTest();
 		runLinkedListTest();
+		runSortingTest();
+		runQueueTest();
+		runStackTest();
+	}
+
+	public static void runSortingTest() {
+		SortingTest test = new SortingTest();
+
+		echo("SortingTest bubbleSort()");
+		test.bubbleSortTest();
+
+		echo("SortingTest testSwaps()");
+		test.testSwaps();
+	}
+
+	public static void runStackTest() {
+		StackTest test = new StackTest();
+
+		echo("StackTest testPop()");
+		test.testPop();
+
+		echo("StackTest testPush()");
+		test.testPush();
+	}
+
+	public static void runQueueTest() {
+		QueueTest test = new QueueTest();
+
+		echo("QueueTest testIsEmpty()");
+		test.testIsEmpty();
+
+		echo("QueueTest testEnqueue()");
+		test.testEnqueue();
+
+		echo("QueueTest testDequeue()");
+		test.testDequeue();
 	}
 
 	public static void runRBBinarySearchTreeTest() {
