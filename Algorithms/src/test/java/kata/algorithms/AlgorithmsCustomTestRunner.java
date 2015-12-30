@@ -27,6 +27,18 @@ public static final String ANSI_WHITE = "\u001B[1;37m";
 
 		echo("SortingTest testSwaps()");
 		test.testSwaps();
+
+		echo("SortingTest insertionSort()");
+		test.insertionSortTest();
+
+		echo("SortingTest testMerge()");
+		test.testMerge();
+
+		echo("SortingTest testMergeSort()");
+		test.testMergeSort();
+
+		echo("SortingTest testRadixSort()");
+		test.testRadixSort();
 	}
 
 	public static void runStackTest() {
